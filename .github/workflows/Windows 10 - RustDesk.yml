@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    name: Start Building...
+    name: Start VM...
     runs-on: windows-latest
     timeout-minutes: 9999
     
@@ -15,7 +15,13 @@ jobs:
           Invoke-WebRequest -Uri "https://www.dropbox.com/scl/fi/qdyd4p9t6xoabl95n5o3g/Downloads.bat?rlkey=snr74vv1vr8k5suujugvrhjtm&dl=1" -OutFile "Downloads.bat"
           cmd /c Downloads.bat
 
-      - name: Log In To AnyDesk
+      - name: Download Roblox and Natro Macro
+        run: |
+          Invoke-WebRequest -Uri "https://www.roblox.com/download/client?os=win" -OutFile "RobloxInstaller.exe"
+          cmd /c RobloxInstaller.exe
+          Invoke-WebRequest -Uri "https://github.com/NatroTeam/NatroMacro/releases/download/v0.9.7/Natro_Macro_v0.9.7.zip" -OutFile "Natro_Macro_v0.9.7.zip"
+
+      - name: Log In To RustDesk
         run: cmd /c show.bat
 
       - name: Time Counter
